@@ -3,13 +3,13 @@ import React from 'react'
 
 function Nav() {
   return (
-    <div className='nav'>
+    <nav>
       <ul>
         <button>ToDos</button>
         <button>Steps</button>
         <button>Priorities</button>
-      </ul>
-    </div>
+      </ul> 
+    </nav>
   )
 }
 

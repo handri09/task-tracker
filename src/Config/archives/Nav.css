@@ -1,26 +1,4 @@
 nav {
-  position: sticky;
-  border: 1px solid black;
-  text-align: center;
-}
-
-ul {
-  margin: 1vw;
-}
-
-ul button {
-  margin-left: 1vw;
-  margin-right: 1vw;
-  border: 1px solid blue;
-  border-radius: 1vw;
-  padding: 1vw;
-}
-ul button:hover {
-  background-color: rgba(0, 0, 255, 0.356);
-  color: white;
-}
-
-/*nav {
   text-align: center;
 }
 
@@ -46,4 +24,3 @@ ul button:hover {
   background-color: rgba(0, 0, 255, 0.6);
   color: white;
 }
-*/

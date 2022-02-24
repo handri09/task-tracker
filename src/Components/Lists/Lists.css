@@ -1,4 +1,7 @@
 .lists {
-  margin-top:60px;
+  display: grid;
+  grid-template-columns: 80vw;
   border: 1px solid blue;
+  justify-content: center;
+  align-content: center;
 }

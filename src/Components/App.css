@@ -1,3 +1,4 @@
-.container {
-  text-align: center;
+.cont {
+  background-color: white;  
+  border: 1px solid cyan;
 }
