@@ -1,4 +1,3 @@
-import './List.css'
 import React from 'react'
 
 function List({ task }) {
@@ -11,7 +10,6 @@ function List({ task }) {
   let ss = second - minute*60
   let min = minute - hour*60
   let hh = hour - day*24
-
 
   // console.log('day:',day,'hh:',hh,'min:',min,'ss:', ss)
   // Formating 
@@ -31,11 +29,12 @@ function List({ task }) {
   // console.log(day, hour, minute, hour, second)
   // console.log(day + ' - ' + hh + ':' + min + ':' + ss)
   return (
-    <div className='list'>
-      <div>{task.id}</div>
-      <div>{day + ' - ' + hh + ':' + min + ':' + ss}</div>
-      <div>{task.name}</div>
-      <div>{task.responsible}</div> 
+    <div className='grid grid-cols-5 gap-0'>
+      <div className='bg-gray-200 m-0.5 text-center'>{task.name}</div>
+      <div className='bg-gray-200 m-0.5 text-center'>{task.id}</div>
+      <div className='bg-gray-200 m-0.5 text-center'>{day + ' - ' + hh + ':' + min + ':' + ss}</div>
+      <div className={task.status === 'Done' ? 'bg-green-400 text-white m-0.5 text-center' : (task.status === 'Stuck' ? 'bg-red-500 text-white m-0.5 text-center' : 'bg-orange-400 text-white m-0.5 text-center')}>{task.status}</div> 
+      <div className='bg-gray-200 m-0.5 text-center'>{task.responsible}</div> 
     </div>
   )
 }

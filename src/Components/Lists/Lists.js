@@ -1,4 +1,3 @@
-import './Lists.css'
 import React from 'react'
 import List from './List'
 import { tasks } from '../../Utils/Data'
@@ -14,8 +13,9 @@ function Lists(props) {
   tasksFilt.sort((a,b)=> a.duration-b.duration)
   console.log(tasks)
   console.log(tasksFilt)
+
   return (
-    <div className='lists'>
+    <div className=''>
       {tasksFilt.map((task) => (
         <List key={task.id} task={task}/>
       ))}

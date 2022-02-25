@@ -6,6 +6,7 @@ export const tasks = [
     endDate: new Date('01-01-2022'),
     responsible: 'John',
     statusDetail: 'status Detail',
+    status: 'Working on it',
   },
   {
     id: '0002',
@@ -14,6 +15,7 @@ export const tasks = [
     endDate: new Date('02-01-2022 01:00:00'),
     responsible: 'Hasimanitra',
     statusDetail: 'status Detail',
+    status: 'Stuck',
   },
   {
     id: '0003',
@@ -22,6 +24,7 @@ export const tasks = [
     endDate: new Date('03-01-2022'),
     responsible: 'Liantso',
     statusDetail: 'status Detail',
+    status: 'Done',
   },
   {
     id: '0004',
@@ -30,6 +33,7 @@ export const tasks = [
     endDate: new Date('03-10-2022'),
     responsible: 'Lanto',
     statusDetail: 'status Detail',
+    status: 'Working on it',
   },{
     id: '0005',
     name: 'Contract-5',
@@ -37,6 +41,7 @@ export const tasks = [
     endDate: new Date('03-10-2022'),
     responsible:'Haja',
     statusDetail: 'status Detail',
+    status: 'Working on it',
 
     // Diary TAF
     sourcingDescription:'MSA FLUOR',
