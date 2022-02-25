@@ -8,15 +8,34 @@ function List({ task }) {
   let day = parseInt(hour/24)
 
   // illustration DAY - Hour:Min:ss
-  const ss = second - minute*60
-  const min = minute - hour*60
-  const hh = hour - day*24
+  let ss = second - minute*60
+  let min = minute - hour*60
+  let hh = hour - day*24
+
+
+  // console.log('day:',day,'hh:',hh,'min:',min,'ss:', ss)
+  // Formating 
+  if (ss.toString().split('').length === 1) {
+      ss = `0${ss}`
+  }
+  if (min.toString().split('').length === 1) {
+      min = `0${min}`
+  }
+  if (hh.toString().split('').length === 1) {
+      hh = `0${hh}`
+  }
+  if (day.toString().split('').length === 1) {
+      day = `0${day}`
+  }
  
   // console.log(day, hour, minute, hour, second)
   // console.log(day + ' - ' + hh + ':' + min + ':' + ss)
   return (
     <div className='list'>
-      {task.id} | {day + ' - ' + hh + ':' + min + ':' + ss} | {task.name} 
+      <div>{task.id}</div>
+      <div>{day + ' - ' + hh + ':' + min + ':' + ss}</div>
+      <div>{task.name}</div>
+      <div>{task.responsible}</div> 
     </div>
   )
 }
