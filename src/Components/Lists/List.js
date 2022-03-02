@@ -1,6 +1,14 @@
 import React from 'react'
+import Popover from '../mui/Popover'
+import { Avatar, Button } from '@mui/material'
+import Modal from 'react-modal'
+import convertExcelDate from '../../Helpers/ConvertExcelDate'
+const { useState, useEffect } = React
 
+
+Modal.setAppElement('#root')
 function List({ task }) {
+  /*
   let second = (task.endDate-task.startDate)/1000
   let minute = parseInt(second/60)
   let hour =  parseInt(minute/60)
@@ -24,17 +32,67 @@ function List({ task }) {
   }
   if (day.toString().split('').length === 1) {
       day = `0${day}`
-  }
+  }*/
  
+  // Define Status color
+  // New - Ongoing - On hold - Done - Cancelled
+  let status_color = 'text-white m-0.5'
+  switch(task.status) {
+    case 'New':
+      status_color = 'bg-red-500 '+status_color
+      break;
+    case 'Ongoing':
+      status_color = 'bg-orange-400 '+status_color
+      break;
+    case 'On hold':
+      status_color = 'bg-sky-500 '+status_color
+      break;
+    case 'Done':
+      status_color = 'bg-green-500 '+status_color
+      break;
+    case 'Cancelled':
+      status_color = 'bg-gray-400 '+status_color
+      break;
+  }
+
+  const [isOpen, setIsOpen] = useState(false)
   // console.log(day, hour, minute, hour, second)
   // console.log(day + ' - ' + hh + ':' + min + ':' + ss)
+
   return (
-    <div className='grid grid-cols-5 gap-0'>
-      <div className='bg-gray-200 m-0.5 text-center'>{task.name}</div>
-      <div className='bg-gray-200 m-0.5 text-center'>{task.id}</div>
-      <div className='bg-gray-200 m-0.5 text-center'>{day + ' - ' + hh + ':' + min + ':' + ss}</div>
-      <div className={task.status === 'Done' ? 'bg-green-400 text-white m-0.5 text-center' : (task.status === 'Stuck' ? 'bg-red-500 text-white m-0.5 text-center' : 'bg-orange-400 text-white m-0.5 text-center')}>{task.status}</div> 
-      <div className='bg-gray-200 m-0.5 text-center'>{task.responsible}</div> 
+    <div className='grid grid-cols-8 text-center items-center font-mono p-x-2' > {/*items-center place-items-center justify-items-stretch */}
+      {/* <Button onClick={() => setIsOpen(true)}>Open Modal</Button> */}
+      <div className='bg-gray-200 m-0.5 col-span-2 truncate border-2 border-black p-2'>{task.description}</div>
+      <div className='bg-gray-200 m-0.5 col-span-3 truncate border-2 border-black p-2'>{task.nextAction ? task.nextAction : 'None'}</div> 
+      <div className='bg-gray-200 m-0.5 border-2 border-black p-2'>{task.sowSrfReceived ? convertExcelDate(parseInt(task.sowSrfReceived)) : convertExcelDate()}</div>
+      {/* <div className='bg-gray-200 m-0.5 '>{day + ' - ' + hh + ':' + min + ':' + ss}</div> */}
+      <div className='grid bg-gray-200 m-0.5 justify-items-center content-center items-center border-2 border-black'><Avatar src={`./${task.who.toLowerCase()}.jpg`} alt={`${task.who}.jpg`} className='uppercase' />{/*task.responsible.slice(0,2)</Avatar>*/}</div> 
+      {/* <div className={task.status === 'Done' ? 'bg-green-400 text-white m-0.5' : (task.status === 'Stuck' ? 'bg-red-500 text-white m-0.5 ' : 'bg-orange-400 text-white m-0.5 ')}>{task.status}</div>  */}
+      {/* <div className={status_color}>{task.status}</div> */}
+      <Popover color={status_color} task={task.status} />
+      {/* <Button variant='outlined' onClick={() => setIsOpen(true)}>Edit</Button> */}
+      <Modal 
+        isOpen={isOpen}
+        shouldCloseOnOverlayClick = {false}
+        onRequestClose={() => setIsOpen(false)}
+        style={
+          {
+            overlay: {
+              background: 'rgba(220, 220,220,0.5)'
+            },
+            content: {
+              color: 'orange', 
+              width: '50vw',
+              height: '50vh',
+              margin: 'auto',
+            }
+          }
+        }
+        >
+        <h1>Modal is Opened</h1>
+        <p>{task.description}</p>
+        <Button variant='outlined' onClick={() => setIsOpen(false)}>Close Modal</Button>
+      </Modal>
     </div>
   )
 }

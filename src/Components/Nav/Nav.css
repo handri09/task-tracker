@@ -1,4 +1,4 @@
-nav {
+/* nav {
   position: sticky;
   border: 1px solid black;
   text-align: center;
@@ -18,4 +18,13 @@ ul button {
 ul button:hover {
   background-color: rgba(0, 0, 255, 0.356);
   color: white;
+} */
+
+nav {
+  position: sticky;
+  top: 0;
+  height: 10vh;
+  background: rgb(255, 255, 255);
+  box-shadow: center;
+  z-index: 2;
 }
