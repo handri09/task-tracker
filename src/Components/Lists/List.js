@@ -3,6 +3,7 @@ import Popover from '../mui/Popover'
 import { Avatar, Button } from '@mui/material'
 import Modal from 'react-modal'
 import convertExcelDate from '../../Helpers/ConvertExcelDate'
+import AvatarGroup from '@mui/material/AvatarGroup'
 const { useState, useEffect } = React
 
 
@@ -66,7 +67,11 @@ function List({ task }) {
       <div className='bg-gray-200 m-0.5 col-span-3 truncate border-2 border-black p-2'>{task.nextAction ? task.nextAction : 'None'}</div> 
       <div className='bg-gray-200 m-0.5 border-2 border-black p-2'>{task.sowSrfReceived ? convertExcelDate(parseInt(task.sowSrfReceived)) : convertExcelDate()}</div>
       {/* <div className='bg-gray-200 m-0.5 '>{day + ' - ' + hh + ':' + min + ':' + ss}</div> */}
-      <div className='grid bg-gray-200 m-0.5 justify-items-center content-center items-center border-2 border-black'><Avatar src={`./${task.who.toLowerCase()}.jpg`} alt={`${task.who}.jpg`} className='uppercase' />{/*task.responsible.slice(0,2)</Avatar>*/}</div> 
+      <AvatarGroup total={3} className='grid bg-gray-200 m-0.5 justify-items-center content-center items-center border-2 border-black '>
+        { task.responsible.map(name => (
+          <Avatar src={`./${name.toLowerCase()}.jpg`} alt={`${name}.jpg`} key={name} className='uppercase' />
+        ))}
+      </AvatarGroup> 
       {/* <div className={task.status === 'Done' ? 'bg-green-400 text-white m-0.5' : (task.status === 'Stuck' ? 'bg-red-500 text-white m-0.5 ' : 'bg-orange-400 text-white m-0.5 ')}>{task.status}</div>  */}
       {/* <div className={status_color}>{task.status}</div> */}
       <Popover color={status_color} task={task.status} />

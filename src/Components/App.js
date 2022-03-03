@@ -4,7 +4,7 @@ import Nav from './Nav/Nav'
 
 function App() {
   return (
-    <div className="cont">
+    <div className="cont font-mono">
       <Nav />
       <Lists />
     </div>
