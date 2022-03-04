@@ -17,7 +17,7 @@ function Lists(props) {
     <div className=''>
 
       <div className='grid grid-cols-8 text- text-lg font-mono'>
-        <div className='bg-gray-300 m-0.5 text-blue-600 col-span-2 text-center self-align-start'>Task</div>
+        <div className='bg-gray-300 m-0.5 text-blue-600 col-span-2 text-center self-align-start '>Task</div>
         <div className='bg-gray-300 m-0.5 text-center col-span-3'>Action</div>
         <div className='bg-gray-300 m-0.5 text-center'>Date</div>
         <div className='bg-gray-300 m-0.5 text-center'>Person</div> 

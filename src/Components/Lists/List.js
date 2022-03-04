@@ -4,10 +4,13 @@ import { Avatar, Button } from '@mui/material'
 import Modal from 'react-modal'
 import convertExcelDate from '../../Helpers/ConvertExcelDate'
 import AvatarGroup from '@mui/material/AvatarGroup'
+import DatePicker from '../mui/DatePicker'
+import DP from '../mui/DP'
 const { useState, useEffect } = React
 
 
 Modal.setAppElement('#root')
+
 function List({ task }) {
   /*
   let second = (task.endDate-task.startDate)/1000
@@ -57,6 +60,7 @@ function List({ task }) {
   }
 
   const [isOpen, setIsOpen] = useState(false)
+  const [hide, setHide] = useState(true)
   // console.log(day, hour, minute, hour, second)
   // console.log(day + ' - ' + hh + ':' + min + ':' + ss)
 
@@ -65,9 +69,13 @@ function List({ task }) {
       {/* <Button onClick={() => setIsOpen(true)}>Open Modal</Button> */}
       <div className='bg-gray-200 m-0.5 col-span-2 truncate border-2 border-black p-2'>{task.description}</div>
       <div className='bg-gray-200 m-0.5 col-span-3 truncate border-2 border-black p-2'>{task.nextAction ? task.nextAction : 'None'}</div> 
-      <div className='bg-gray-200 m-0.5 border-2 border-black p-2'>{task.sowSrfReceived ? convertExcelDate(parseInt(task.sowSrfReceived)) : convertExcelDate()}</div>
+      <div className={`bg-gray-200 m-0.5 border-2 border-black p-2 ${!hide && 'hidden'}`}
+        onClick={() => setHide(hide => !hide)}
+        >{task.sowSrfReceived ? convertExcelDate(parseInt(task.sowSrfReceived)) : convertExcelDate()}</div>
       {/* <div className='bg-gray-200 m-0.5 '>{day + ' - ' + hh + ':' + min + ':' + ss}</div> */}
-      <AvatarGroup total={3} className='grid bg-gray-200 m-0.5 justify-items-center content-center items-center border-2 border-black '>
+      {/* <DatePicker /> */}
+      <DP hide={hide} />
+      <AvatarGroup className='grid bg-gray-200 m-0.5 justify-items-center content-center items-center border-2 border-black '>
         { task.responsible.map(name => (
           <Avatar src={`./${name.toLowerCase()}.jpg`} alt={`${name}.jpg`} key={name} className='uppercase' />
         ))}
