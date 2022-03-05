@@ -14,6 +14,7 @@ export default function CustomInput(props) {
         onChange={(newValue) => {
           setValue(newValue);
           console.log(newValue)
+          props.show()
         }}
         renderInput={({ inputRef, inputProps, InputProps }) => (
           <Box sx={{ display: !props.hide ? 'flex' : 'None', alignItems: 'center' }} >
