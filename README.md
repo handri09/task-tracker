@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Task Trackers
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was initiated to manage the daily task priorities with the due time of each defined step.
 
 ## Available Scripts
 
