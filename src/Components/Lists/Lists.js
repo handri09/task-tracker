@@ -10,6 +10,21 @@ function Lists(props) {
     }
   })
   
+  React.useEffect(()=>{
+
+      fetch('https://aiskon.deta.dev/',{
+        method: 'GET',
+        headers: {
+        'X-Deepseek-Api-Key': 'a0kybe7b_1K7gHWq6hnxrKXFD3JSmSBQ2AHDggQn7',
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(task => task.json())
+    .then(task => console.log(task))
+
+  }, [])
+
+
   tasksFilt.sort((a,b)=> a.duration-b.duration)
   console.log(tasksFilt)
 
