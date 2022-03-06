@@ -1,6 +1,6 @@
 export const tasks_ = [
   {
-    description:"task - 01",  // Task Name 
+    description: "task - 01",  // Task Name 
     status:"Ongoing",         // Done, Ongoing, On Hold, Cancelled, New
     type:"Contract",          // Contract, Amendment, PO, Quotation 
     strategy:"Tendering",     // Tendering, SSJ
