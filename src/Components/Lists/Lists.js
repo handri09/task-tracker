@@ -13,16 +13,18 @@ function Lists(props) {
   tasksFilt.sort((a,b)=> a.duration-b.duration)
   console.log(tasksFilt)
 
+  // className basics 
+  const className = 'bg-gray-300 m-0.5 text-center'
+
   return (
-    <div className=''>
+    <div className={className}>
 
       <div className='grid grid-cols-8 text- text-lg font-mono'>
-        <div className='bg-gray-300 m-0.5 text-blue-600 col-span-2 text-center self-align-start '>Task</div>
-        <div className='bg-gray-300 m-0.5 text-center col-span-3'>Action</div>
-        <div className='bg-gray-300 m-0.5 text-center'>Date</div>
-        <div className='bg-gray-300 m-0.5 text-center'>Person</div> 
-        <div className='bg-gray-300 m-0.5 text-center'>Status</div> 
-        {/* <div className='bg-gray-300 m-0.5 text-center'>Update</div>  */}
+        <div className={`${className} text-blue-600 col-span-2 self-align-start`}>Task</div>
+        <div className={`${className} col-span-3`}>Action</div>
+        <div className={className}>Date</div>
+        <div className={className}>Person</div> 
+        <div className={className}>Status</div> 
       </div>
 
       {tasksFilt.map((task) => (
