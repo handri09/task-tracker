@@ -20,13 +20,15 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
       style={
         {
           overlay: {
-            background: 'rgba(220, 220,220,0.5)',
+            background: 'rgba(220, 220, 220, 0.7)',
           },
           content: {
             width: '50vw',
             height: '80vh',
             margin: 'auto',
-            background: 'white'
+            background: 'white',
+            borderRadius: '1%',
+            shadow: '10%'
           }
         }
       }
@@ -36,13 +38,13 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
           <Button variant='contained' size='small' color='error' onClick={() => setIsOpen(false)}>X</Button>
         </div>
         <div className='flex my-3'>
-          <Input value={name} onChange={(e) => setName(e.target.value)} className='m-3 w-full'/>
+          Task Name: <Input value={name} onChange={(e) => setName(e.target.value)} className='m-3 w-full'/>
         </div>
         <div className='flex my-3'>
-          <Input value={action} onChange={(e) => setAction(e.target.value)} className='m-3 w-full'/>
+          Action: <Input value={action} onChange={(e) => setAction(e.target.value)} className='m-3 w-full'/>
         </div>
         <div className='flex my-3'>
-          <Input type='date' value={date} className='m-3 w-full' onChange={(e) => setDate(e.target.value)}/>
+          Date: <Input type='date' value={date} className='m-3 w-full' onChange={(e) => setDate(e.target.value)}/>
         </div>
         <div className='flex my-3'>
           <AutoButton placeholder='Status' defVal={task.status} setStatus={(e) => setStatus(e)}/>
