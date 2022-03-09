@@ -21,7 +21,6 @@ function Lists(props) {
     })
     .then(task => task.json())
     .then(task => console.log(task))
-
   }, [])
 
 
@@ -43,7 +42,9 @@ function Lists(props) {
       </div>
 
       {tasksFilt.map((task) => (
-        <List key={task.sourcingDescription} task={task}/>
+        <div key={task.sourcingDescription} className='grid grid-cols-8 text-center items-center font-mono p-x-2' >
+          <List task={task} key={task.sourcingDescription} />
+        </div>
       ))}
     </div>
   )

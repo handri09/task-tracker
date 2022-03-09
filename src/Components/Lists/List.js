@@ -41,7 +41,7 @@ function List({ task }) {
   })
 
   return (
-    <div className='grid grid-cols-8 text-center items-center font-mono p-x-2' > {/*items-center place-items-center justify-items-stretch */}
+    <>
       {/* <Button onClick={() => setIsOpen(true)}>Open Modal</Button> */}
       <div className='bg-gray-200 m-0.5 col-span-2 truncate border-2 border-black p-2'
         onClick={() => setIsOpen(true)}
@@ -70,7 +70,7 @@ function List({ task }) {
       {/* <Button variant='outlined' onClick={() => setIsOpen(true)}>Edit</Button> */}
       <Editable task={task} isOpen={isOpen} setIsOpen={() => setIsOpen(false)} nextAction={nextAction}
         handleChange={(e) => handleChange(e)}/>
-    </div>
+    </>
   )
 }
 
