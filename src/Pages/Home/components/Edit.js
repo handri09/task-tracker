@@ -7,6 +7,8 @@ import { DateFormating } from '../../../Helpers/DateFormating'
 
 Modal.setAppElement('#root')
 
+const pStyle = 'flex w-32 self-center p-2 rounded-md'
+
 function Edit ({ task, isOpen, setIsOpen, nextAction}) {
   const [name, setName] = React.useState(task.name)
   const [action, setAction] = React.useState(task.action)
@@ -38,16 +40,16 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
           <Button variant='contained' size='small' color='error' onClick={() => setIsOpen(false)}>X</Button>
         </div>
         <div className='flex my-3'>
-          Task Name: <Input value={name} onChange={(e) => setName(e.target.value)} className='m-3 w-full'/>
+          <p className={pStyle}>Task Name: </p><Input value={name} onChange={(e) => setName(e.target.value)} className='m-3 w-full'/>
         </div>
         <div className='flex my-3'>
-          Action: <Input value={action} onChange={(e) => setAction(e.target.value)} className='m-3 w-full'/>
+          <p className={pStyle}>Action: </p><Input value={action} onChange={(e) => setAction(e.target.value)} className='m-3 w-full'/>
         </div>
         <div className='flex my-3'>
-          Date: <Input type='date' value={date} className='m-3 w-full' onChange={(e) => setDate(e.target.value)}/>
+          <p className={pStyle}>Date: </p><Input type='date' value={date} className='m-3 w-full' onChange={(e) => setDate(e.target.value)}/>
         </div>
         <div className='flex my-3'>
-          <AutoButton placeholder='Status' defVal={task.status} setStatus={(e) => setStatus(e)}/>
+          <p className={pStyle}>Status: </p><AutoButton placeholder='Status' defVal={task.status} setStatus={(e) => setStatus(e)}/>
         </div>
 
         <div className='flex justify-center'>
