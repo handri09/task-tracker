@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
-export default function PopoverPopupState({ task, color }) {
+export default function PopoverPopupState({ task, color, className }) {
 
   
 
@@ -12,7 +12,8 @@ export default function PopoverPopupState({ task, color }) {
     <PopupState variant="popover" popupId="demo-popup-popover"  >
       {(popupState) => (
         <div> {/*className='border-2 border-black'*/}
-          <div  {...bindTrigger(popupState)} className={`${color} border-2 border-black`} >
+          <div  {...bindTrigger(popupState)} className={`${color} border-2 border-black`} > 
+          {/* <div  {...bindTrigger(popupState)} className={className} >  */}
             {task}
           </div>
           <Popover
