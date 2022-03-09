@@ -1,4 +1,20 @@
 
+export function DateFormating(dat) {
+    let date = new Date(dat)
+
+    let day = date.getDay()
+    let month = date.getMonth()+1
+
+    if (day.toString().split('').length === 1) {
+        day = `0${day}`
+    }
+
+    if (month.toString().split('').length === 1) {
+        month = `0${month}`
+    }
+    
+    return `${date.getFullYear()}-${month}-${day}`
+  }
   /*
   let second = (task.endDate-task.startDate)/1000
   let minute = parseInt(second/60)
