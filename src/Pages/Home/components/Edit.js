@@ -161,7 +161,7 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
 
 export default Edit;
 
-function Inputer({name, value}) {
+function Inputer({variable, name, value}) {
   const status_color = getColStat(value)
   const [val, setVal] = React.useState('')
   React.useEffect(() => {
@@ -180,7 +180,22 @@ function Inputer({name, value}) {
           <div className='text-lg py-1 px-3 font-bold text-gray-600'>{name}</div>
 
           {/* Input Type depends on the name */}
-          { name === 'status' ? 
+
+          { name === 'date' && (
+            <input 
+              className={`
+                placeholder:italic placeholder:text-slate-400 block
+                col-span-2 border border-slate-300 py-2 px-6 rounded-md shadow-sm
+                focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm
+                hover:border-sky-500
+                `}
+              placeholder={value} type={name==='date'?'date':'text'} name="Name" value={val}  
+              onFocus={() => setVal(val)} 
+              onChange={(e) => setVal(prev => e.target.value) }
+              />
+          )}
+
+          { name === 'status' &&
             (
               <div className='col-span-2 text-md font-bold'>
                 <Popover color={getColStat(val)} task={val} className={`
@@ -193,9 +208,8 @@ function Inputer({name, value}) {
                   onChanging={(e) => setVal(e)}
                   />
               </div>
-            )
-            :
-            ( 
+            )}
+            { (name !== 'status' && name !== 'date')  &&( 
               <input 
               className={`
                 placeholder:italic placeholder:text-slate-400 block
@@ -204,13 +218,13 @@ function Inputer({name, value}) {
                 hover:border-sky-500
                 `}
               placeholder={value} type={name==='date'?'date':'text'} name="Name" value={val}  
-              onFocus={() => setVal(prev => value)} 
+              onFocus={() => setVal(value)} 
               onChange={(e) => {
                 setVal(prev => e.target.value)
-                console.log(e)
+                console.dir(e.target.value)
+                }
               }
-              }
-              />  
+              />
             )
             }        
         </div>
