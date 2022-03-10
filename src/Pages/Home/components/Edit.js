@@ -61,13 +61,14 @@ function Inputer({variable, name, value}) {
   const status_color = getColStat(value)
   const [val, setVal] = React.useState('')
   React.useEffect(() => {
-    if (name==='date') {
-      setVal(prev => value)
-    }
+    setVal(value)
+    // if (name==='date') {
+    //   setVal(prev => value)
+    // }
 
-    if (name==='status') {
-      setVal(prev => value)
-    }
+    // if (name==='status') {
+    //   setVal(prev => value)
+    // }
   }, [])
   return (
     <>
@@ -111,13 +112,15 @@ function Inputer({variable, name, value}) {
 
             { types(name) === 'digit' && (
               <div className='col-span-2 text-md font-bold'>
-                <Popover color={getColStat(val)} task={val} className={`
-                font-mono w-full
-                placeholder:italic placeholder:text-slate-400 block
-                col-span-2 border border-slate-500 py-2 px-6 rounded-md shadow-sm
-                focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 
-                hover:border-sky-500 m-0
-                `} 
+                <Popover className={`
+                  font-mono w-full
+                  placeholder:italic placeholder:text-slate-400 block
+                  col-span-2 border border-slate-500 py-2 px-6 rounded-md shadow-sm
+                  focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 
+                  hover:border-sky-500 m-0
+                  `} 
+                  color={getColStat(val)} 
+                  task={val} 
                   onChanging={(e) => setVal(e)}
                   />
               </div>
