@@ -33,7 +33,7 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
             padding: 0,
             margin: 'auto',
             background: 'white',
-            borderRadius: '1%',
+            borderRadius: '1.5%',
           }
         }
       }
@@ -45,123 +45,19 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
         </div>
       </div>
 
-      {Object.keys(task).map( k => (
-        <Inputer key={k} name={k} value={task[k]}/>
-      ))}
-      
-      {/* <div className='sticky top-0 z-10 bg-white grid grid-cols-2 font-mono font-bold text-2xl border-2 border-black '>
-        <div className='flex justify-start ml-5'>{task.name}</div>
-        <div className='flex justify-end'>
-          <button className='flex items-center justify-center p-1 h-10 w-10 rounded-full border-2 border-red-700 text-red-500 hover:bg-red-500 hover:text-white text-xl' onClick={() => setIsOpen(false)}>x</button>
-        </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 border border-red-800">
+        {Object.keys(task).map( k => (
+          <Inputer key={k} name={k} value={task[k]}/>
+        ))}
       </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-2 mt-10">
-        <div className=''>
-          <div className='flex my-3 shadow-lg hover:shadow-xl hover:border-black border-2'>
-            <p className={pStyle}>Task Name: </p>
-            <Input value={name} onChange={(e) => setName(e.target.value)} className='my-2 mx-7 w-full'/>
-          </div>
-          <div className='flex my-3'>
-            <p className={pStyle}>Action: </p>
-            <Input value={action} onChange={(e) => setAction(e.target.value)} className='my-2 mx-7 w-full'/>
-          </div>
-          <div className='flex my-3'>
-            <p className={pStyle}>Date: </p>
-            <Input type='date' value={date} className='my-2 mx-7 w-full' onChange={(e) => setDate(e.target.value)}/>
-          </div>
-          <div className='flex my-3'>
-            <p className={pStyle}>Status: </p>
-            <AutoButton placeholder='Status' defVal={task.status} setStatus={(e) => setStatus(e)}/>
-          </div>  
-
-
-
-          <div className='flex my-3'>
-            <p className={pStyle}>Type: </p>
-            <AutoButton placeholder='Type' defVal={task.status} setStatus={(e) => setStatus(e)}/>
-          </div> 
-          <div className='flex my-3'>
-            <p className={pStyle}>Strategy: </p>
-            <AutoButton placeholder='Strategy' defVal={task.status} setStatus={(e) => setStatus(e)}/>
-          </div> 
-          <div className='flex my-3 shadow-lg hover:shadow-xl hover:border-black border-2'>
-            <p className={pStyle}>Reference: </p>
-            <Input value={name} onChange={(e) => setName(e.target.value)} className='my-2 mx-7 w-full'/>
-          </div>
-          <div className='flex my-3 shadow-lg hover:shadow-xl hover:border-black border-2'>
-            <p className={pStyle}>End User: </p>
-            <Input value={name} onChange={(e) => setName(e.target.value)} className='my-2 mx-7 w-full'/>
-          </div>
-          <div className='flex my-3 shadow-lg hover:shadow-xl hover:border-black border-2'>
-            <p className={pStyle}>EndUser Departement: </p>
-            <Input value={name} onChange={(e) => setName(e.target.value)} className='my-2 mx-7 w-full'/>
-          </div>
-          <div className='flex my-3 shadow-lg hover:shadow-xl hover:border-black border-2'>
-            <p className={pStyle}>State : </p>
-            <Input value={name} onChange={(e) => setName(e.target.value)} className='my-2 mx-7 w-full'/>
-          </div>
-          <div className='flex my-3 shadow-lg hover:shadow-xl hover:border-black border-2'>
-            <p className={pStyle}>Responsible: </p>
-            <Input value={name} onChange={(e) => setName(e.target.value)} className='my-2 mx-7 w-full'/>
-          </div>
-          <div className='flex my-3 shadow-lg hover:shadow-xl hover:border-black border-2'>
-            <p className={pStyle}>SOW SRF Received: </p>
-            <Input value={name} onChange={(e) => setName(e.target.value)} className='my-2 mx-7 w-full'/>
-          </div>
-
-        </div>
-
-        <div className=''>
-          <div className='flex my-3'>
-            <p className={pStyle}>Task Name: </p>
-            <Input value={name} onChange={(e) => setName(e.target.value)} className='my-2 mx-7 w-full'/>
-          </div>
-          <div className='flex my-3'>
-            <p className={pStyle}>Action: </p>
-            <Input value={action} onChange={(e) => setAction(e.target.value)} className='my-2 mx-7 w-full'/>
-          </div>
-          <div className='flex my-3'>
-            <p className={pStyle}>Date: </p>
-            <Input type='date' value={date} className='my-2 mx-7 w-full' onChange={(e) => setDate(e.target.value)}/>
-          </div>
-          <div className='flex my-3'>
-            <p className={pStyle}>Status: </p>
-            <AutoButton placeholder='Status' defVal={task.status} setStatus={(e) => setStatus(e)}/>
-          </div>
-        </div>
-
-        <div className=''>
-          <div className='flex my-3'>
-            <p className={pStyle}>Task Name: </p>
-            <Input value={name} onChange={(e) => setName(e.target.value)} className='my-2 mx-7 w-full'/>
-          </div>
-          <div className='flex my-3'>
-            <p className={pStyle}>Action: </p>
-            <Input value={action} onChange={(e) => setAction(e.target.value)} className='my-2 mx-7 w-full'/>
-          </div>
-          <div className='flex my-3'>
-            <p className={pStyle}>Date: </p>
-            <Input type='date' value={date} className='my-2 mx-7 w-full' onChange={(e) => setDate(e.target.value)}/>
-          </div>
-          <div className='flex my-3'>
-            <p className={pStyle}>Status: </p>
-            <AutoButton placeholder='Status' defVal={task.status} setStatus={(e) => setStatus(e)}/>
-          </div>
-
-        </div> */}
-
-        {/* <div className='flex justify-center'>
-          <Button variant="contained" endIcon={<SaveIcon/>} onClick={() => console.log(name, action, date, status)}>Save</Button>
-        </div> */}
-      {/* </div> */}
+      <div className='h-5 mb-5'></div>
     </Modal>
   );
 }
 
 export default Edit;
 
-function Inputer({name, value}) {
+function Inputer({variable, name, value}) {
   const status_color = getColStat(value)
   const [val, setVal] = React.useState('')
   React.useEffect(() => {
@@ -175,12 +71,27 @@ function Inputer({name, value}) {
   }, [])
   return (
     <>
-      <div className='grid grid-cols-1 mx-4 my-3 shadow-sm border border-gray-50'>
+      <div className='grid grid-cols-1 mx-4 my-3 shadow-sm border border-gray-100'>
         <div className='grid grid-cols-3 gap-2 p-1'>
           <div className='text-lg py-1 px-3 font-bold text-gray-600'>{name}</div>
 
           {/* Input Type depends on the name */}
-          { name === 'status' ? 
+
+          { name === 'date' && (
+            <input 
+              className={`
+                placeholder:italic placeholder:text-slate-400 block
+                col-span-2 border border-slate-300 py-2 px-6 rounded-md shadow-sm
+                focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm
+                hover:border-sky-500
+                `}
+              placeholder={value} type={name==='date'?'date':'text'} name="Name" value={val}  
+              onFocus={() => setVal(val)} 
+              onChange={(e) => setVal(prev => e.target.value) }
+              />
+          )}
+
+          { name === 'status' &&
             (
               <div className='col-span-2 text-md font-bold'>
                 <Popover color={getColStat(val)} task={val} className={`
@@ -193,9 +104,8 @@ function Inputer({name, value}) {
                   onChanging={(e) => setVal(e)}
                   />
               </div>
-            )
-            :
-            ( 
+            )}
+            { (name !== 'status' && name !== 'date')  &&( 
               <input 
               className={`
                 placeholder:italic placeholder:text-slate-400 block
@@ -204,13 +114,13 @@ function Inputer({name, value}) {
                 hover:border-sky-500
                 `}
               placeholder={value} type={name==='date'?'date':'text'} name="Name" value={val}  
-              onFocus={() => setVal(prev => value)} 
+              onFocus={() => setVal(value)} 
               onChange={(e) => {
                 setVal(prev => e.target.value)
-                console.log(e)
+                console.dir(e.target.value)
+                }
               }
-              }
-              />  
+              />
             )
             }        
         </div>
