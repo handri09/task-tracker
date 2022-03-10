@@ -33,7 +33,7 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
             padding: 0,
             margin: 'auto',
             background: 'white',
-            borderRadius: '1%',
+            borderRadius: '1.5%',
           }
         }
       }
@@ -45,9 +45,12 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
         </div>
       </div>
 
-      {Object.keys(task).map( k => (
-        <Inputer key={k} name={k} value={task[k]}/>
-      ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 border border-red-800">
+        {Object.keys(task).map( k => (
+          <Inputer key={k} name={k} value={task[k]}/>
+        ))}
+      </div>
+      <div className='h-5 mb-5'></div>
     </Modal>
   );
 }
@@ -68,7 +71,7 @@ function Inputer({variable, name, value}) {
   }, [])
   return (
     <>
-      <div className='grid grid-cols-1 mx-4 my-3 shadow-sm border border-gray-50'>
+      <div className='grid grid-cols-1 mx-4 my-3 shadow-sm border border-gray-100'>
         <div className='grid grid-cols-3 gap-2 p-1'>
           <div className='text-lg py-1 px-3 font-bold text-gray-600'>{name}</div>
 
