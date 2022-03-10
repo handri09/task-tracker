@@ -28,6 +28,9 @@ export function getColStat(status) {
     case 'True':
       status_color = 'bg-green-500 '+status_color
       break;
+    case 'Amendment':
+      status_color = 'bg-gray-800 '+status_color
+      break;
   }
   return status_color
 }
