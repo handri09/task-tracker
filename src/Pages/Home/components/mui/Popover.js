@@ -5,10 +5,11 @@ import Popover from '@mui/material/Popover';
 import PopupState, { bindTrigger, bindPopover } from 'material-ui-popup-state';
 
 export default function PopoverPopupState({ task, color, className, onChanging }) {
+  task ? console.log(true): console.log(false)
   return (
-    <PopupState variant="popover" popupId="demo-popup-popover" className='border-2 border-green-600' >
+    <PopupState variant="popover" popupId="demo-popup-popover" >
       {(popupState) => (
-        <div className=''> {/*className='border-2 border-black'*/}
+        <div className=''>
           <div  {...bindTrigger(popupState)} 
             className={`${color} ${className} w-full`}
             > 
