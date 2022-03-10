@@ -16,6 +16,18 @@ export function getColStat(status) {
     case 'Cancelled':
       status_color = 'bg-gray-400 '+status_color
       break;
+    case 'Tendering':
+      status_color = 'bg-gray-400 '+status_color
+      break;
+    case 'Contract':
+      status_color = 'bg-gray-400 '+status_color
+      break;
+    case 'False':
+      status_color = 'bg-red-500 '+status_color
+      break;
+    case 'True':
+      status_color = 'bg-green-500 '+status_color
+      break;
   }
   return status_color
 }
