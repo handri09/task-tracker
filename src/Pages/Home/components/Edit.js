@@ -77,7 +77,7 @@ function Inputer({variable, name, value}) {
 
           {/* Input Type depends on the name */}
 
-          { name === 'date' && (
+          { types(name) === 'date' && (
             <input 
               className={`
                 placeholder:italic placeholder:text-slate-400 block
@@ -91,21 +91,7 @@ function Inputer({variable, name, value}) {
               />
           )}
 
-          { name === 'status' &&
-            (
-              <div className='col-span-2 text-md font-bold'>
-                <Popover color={getColStat(val)} task={val} className={`
-                font-mono w-full
-                placeholder:italic placeholder:text-slate-400 block
-                col-span-2 border border-slate-500 py-2 px-6 rounded-md shadow-sm
-                focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 
-                hover:border-sky-500 m-0
-                `} 
-                  onChanging={(e) => setVal(e)}
-                  />
-              </div>
-            )}
-            { (name !== 'status' && name !== 'date')  &&( 
+            { types(name) === 'text'  && ( 
               <input 
               className={`
                 placeholder:italic placeholder:text-slate-400 block
@@ -119,12 +105,92 @@ function Inputer({variable, name, value}) {
                 setVal(prev => e.target.value)
                 console.dir(e.target.value)
                 }
-              }
-              />
+              }/>
             )
             }        
+
+            { types(name) === 'digit' && (
+              <div className='col-span-2 text-md font-bold'>
+                <Popover color={getColStat(val)} task={val} className={`
+                font-mono w-full
+                placeholder:italic placeholder:text-slate-400 block
+                col-span-2 border border-slate-500 py-2 px-6 rounded-md shadow-sm
+                focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 
+                hover:border-sky-500 m-0
+                `} 
+                  onChanging={(e) => setVal(e)}
+                  />
+              </div>
+            )}
         </div>
       </div>
     </>
   );
+}
+
+
+
+function types(name) {
+  switch(name) {
+    case 'status':
+      return 'digit'
+    case 'type':
+      return 'digit'
+    case 'name':
+      return 'text'
+    case "action":
+      return "text"
+    case "bidders":
+      return "text"
+    case "budget":
+      return "text"
+    case "cbe":
+      return "text"
+    case "date":
+      return "date"
+    case "endUser_name":
+      return "text"
+    case "endUser_dep":
+      return "text"
+    case "execDate":
+      return "text"
+    case "extendedClosingDate":
+      return "text"
+    case "frqClosed":
+      return "text"
+    case "frqSent":
+      return "text"
+    case "name":
+      return "text"
+    case "nextAction":
+      return "text"
+    case "nextStep":
+      return "text"
+    case "quotationSentToEu":
+      return "text"
+    case "quoteClarif":
+      return "text"
+    case "reference":
+      return "text"
+    case "responsible":
+      return "text"
+    case "rtaSub":
+      return "text"
+    case "rtaValid":
+      return "text"
+    case "saving":
+      return "text"
+    case "siteVisit":
+      return "text"
+    case "sowSrfReceived":
+      return "text"
+    case "state":
+      return "text"
+    case "strategy":
+      return "digit"
+    case "tbe":
+      return "text"
+    case "tracked":
+      return "digit"    
+  }
 }
