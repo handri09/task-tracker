@@ -28,7 +28,6 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
   const [endUser_name, setEndUser_name] = React.useState(task.endUser_name)
   const [endUser_dep, setEndUser_dep] = React.useState(task.endUser_dep)
   const [state, setState] = React.useState(task.state)
-  //const [nextAction, setNextAction] = React.useState(task.nextAction)
   const [responsible, setResponsible] = React.useState(task.responsible)
   const [sowSrfReceived, setSowSrfReceived] = React.useState(task.sowSrfReceived)
   const [frqSent, setFrqSent] = React.useState(task.frqSent)
@@ -76,57 +75,82 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
         setDate(e[0])
         break;
       case "action":
-        return setAction(e[0])
+        setAction(e[0])
+        break;
       case "bidders":
-        return setBidders(e[0])
+        setBidders(e[0])
+        break;
       case "budget":
-        return setBudget(e[0])
+        setBudget(e[0])
+        break;
       case "cbe":
-        return setCbe(e[0])
+        setCbe(e[0])
+        break;
       case "date":
-        return setDate(e[0])
+        setDate(e[0])
+        break;
       case "endUser_dep":
-        return setEndUser_dep(e[0])
+        setEndUser_dep(e[0])
+        break;
       case "endUser_name":
-        return setEndUser_name(e[0])
+        setEndUser_name(e[0])
+        break;
       case "execDate":
-        return setExecDate(e[0])
+        setExecDate(e[0])
+        break;
       case "extendedClosingDate":
-        return setExtendedClosingDate(e[0])
+        setExtendedClosingDate(e[0])
+        break;
       case "frqClosed":
-        return setFrqClosed(e[0])
+        setFrqClosed(e[0])
+        break;
       case "frqSent":
-        return setFrqSent(e[0])
+        setFrqSent(e[0])
+        break;
       case "name":
-        return setName(e[0])
+        setName(e[0])
+        break;
       case "nextStep":
-        return setNextStep(e[0])
+        setNextStep(e[0])
+        break;
       case "quotationSentToEu":
-        return setQuotationSentToEu(e[0])
+        setQuotationSentToEu(e[0])
+        break;
       case "quoteClarif":
-        return setQuoteClarif(e[0])
+        setQuoteClarif(e[0])
+        break;
       case "reference":
-        return setReference(e[0])
+        setReference(e[0])
+        break;
       case "responsible":
-        return setResponsible(e[0])
+        setResponsible(e[0])
+        break;
       case "rtaSub":
-        return setRtaSub(e[0])
+        setRtaSub(e[0])
+        break;
       case "rtaValid":
-        return setRtaValid(e[0])
+        setRtaValid(e[0])
+        break;
       case "saving":
-        return setSaving(e[0])
+        setSaving(e[0])
+        break;
       case "siteVisit":
-        return setSiteVisit(e[0])
+        setSiteVisit(e[0])
+        break;
       case "sowSrfReceived":
-        return setSowSrfReceived(e[0])
+        setSowSrfReceived(e[0])
+        break;
       case "state":
-        return setState(e[0])
+        setState(e[0])
+        break;
       case "tbe":
-        return setTbe(e[0])
+        setTbe(e[0])
+        break;
       case "tracked":
-        return setTracked(e[0])
+        setTracked(e[0])
+        break;
       case "type":
-        return setType(e[0])        
+        setType(e[0])        
     }
   }
 
@@ -168,7 +192,7 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
           <button className='flex items-center gap-2 bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white p-1 px-3 m-2 shadow-md rounded-lg font-mono font-bold'
             onClick={() => {
               // setIsOpen(false)
-              console.log(name, action, date, status, tracked, strategy, type)
+                console.log({action:action},{bidders:bidders},{budget:budget},{cbe:cbe},{date:date},{endUser_dep:endUser_dep},{endUser_name:endUser_name},{execDate:execDate},{extendedClosingDate:extendedClosingDate},{frqClosed:frqClosed},{frqSent:frqSent},{name:name},{nextStep:nextStep},{quotationSentToEu:quotationSentToEu},{quoteClarif:quoteClarif},{reference:reference},{responsible:responsible},{rtaSub:rtaSub},{rtaValid:rtaValid},{saving:saving},{siteVisit:siteVisit},{sowSrfReceived:sowSrfReceived},{state:state},{status:status},{strategy:strategy},{tbe:tbe},{tracked:tracked},{type:type})
               }}>
             <SaveIcon />SAVE
           </button></div>
