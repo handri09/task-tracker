@@ -115,7 +115,6 @@ export default function PopoverPopupState({ task, color, className, onChanging }
               </div>
             </Popover>
           )}
-
         </div>
       )}
     </PopupState>

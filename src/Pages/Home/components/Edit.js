@@ -13,17 +13,43 @@ Modal.setAppElement('#root')
 const pStyle = 'flex w-32 self-center p-2 rounded-md'
 
 function Edit ({ task, isOpen, setIsOpen, nextAction}) {
+  
   const status_color = getColStat(task.status)
+
   const [name, setName] = React.useState(task.name)
   const [action, setAction] = React.useState(task.action)
   const [date, setDate] = React.useState(task.date)
+
   const [status, setStatus] = React.useState(task.status)
   const [type, setType] = React.useState(task.type)
   const [strategy, setStrategy] = React.useState(task.strategy)
   const [tracked, setTracked] = React.useState(task.tracked)
-  
+
+  const [endUser_name, setEndUser_name] = React.useState(task.endUser_name)
+  const [endUser_dep, setEndUser_dep] = React.useState(task.endUser_dep)
+  const [state, setState] = React.useState(task.state)
+  //const [nextAction, setNextAction] = React.useState(task.nextAction)
+  const [responsible, setResponsible] = React.useState(task.responsible)
+  const [sowSrfReceived, setSowSrfReceived] = React.useState(task.sowSrfReceived)
+  const [frqSent, setFrqSent] = React.useState(task.frqSent)
+  const [siteVisit, setSiteVisit] = React.useState(task.siteVisit)
+  const [frqClosed, setFrqClosed] = React.useState(task.frqClosed)
+  const [extendedClosingDate, setExtendedClosingDate] = React.useState(task.extendedClosingDate)
+  const [quotationSentToEu, setQuotationSentToEu] = React.useState(task.quotationSentToEu)
+  const [quoteClarif, setQuoteClarif] = React.useState(task.quoteClarif)
+  const [tbe, setTbe] = React.useState(task.tbe)
+  const [cbe, setCbe] = React.useState(task.cbe)
+  const [rtaSub, setRtaSub] = React.useState(task.rtaSub)
+  const [rtaValid, setRtaValid] = React.useState(task.rtaValid)
+  const [execDate, setExecDate] = React.useState(task.execDate)
+  const [budget, setBudget] = React.useState(task.budget)
+  const [saving, setSaving] = React.useState(task.saving)
+  const [nextStep, setNextStep] = React.useState(task.nextStep)
+  const [bidders, setBidders] = React.useState(task.bidders)
+  const [reference, setReference] = React.useState(task.reference)
+
   React.useEffect(() => {
-    console.log(name, action, date, status, tracked, strategy, type)
+    //console.log(name, action, date, status, tracked, strategy, type)
   },[name, action, date, status, tracked, strategy, type])
 
   const setters = (e) => {
@@ -40,6 +66,67 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
       case 'tracked':
         setTracked(e[0])
         break;
+      case 'name':
+        setName(e[0])
+        break;
+      case 'action':
+        setAction(e[0])
+        break;
+      case 'date':
+        setDate(e[0])
+        break;
+      case "action":
+        return setAction(e[0])
+      case "bidders":
+        return setBidders(e[0])
+      case "budget":
+        return setBudget(e[0])
+      case "cbe":
+        return setCbe(e[0])
+      case "date":
+        return setDate(e[0])
+      case "endUser_dep":
+        return setEndUser_dep(e[0])
+      case "endUser_name":
+        return setEndUser_name(e[0])
+      case "execDate":
+        return setExecDate(e[0])
+      case "extendedClosingDate":
+        return setExtendedClosingDate(e[0])
+      case "frqClosed":
+        return setFrqClosed(e[0])
+      case "frqSent":
+        return setFrqSent(e[0])
+      case "name":
+        return setName(e[0])
+      case "nextStep":
+        return setNextStep(e[0])
+      case "quotationSentToEu":
+        return setQuotationSentToEu(e[0])
+      case "quoteClarif":
+        return setQuoteClarif(e[0])
+      case "reference":
+        return setReference(e[0])
+      case "responsible":
+        return setResponsible(e[0])
+      case "rtaSub":
+        return setRtaSub(e[0])
+      case "rtaValid":
+        return setRtaValid(e[0])
+      case "saving":
+        return setSaving(e[0])
+      case "siteVisit":
+        return setSiteVisit(e[0])
+      case "sowSrfReceived":
+        return setSowSrfReceived(e[0])
+      case "state":
+        return setState(e[0])
+      case "tbe":
+        return setTbe(e[0])
+      case "tracked":
+        return setTracked(e[0])
+      case "type":
+        return setType(e[0])        
     }
   }
 
@@ -81,6 +168,7 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
           <button className='flex items-center gap-2 bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white p-1 px-3 m-2 shadow-md rounded-lg font-mono font-bold'
             onClick={() => {
               // setIsOpen(false)
+              console.log(name, action, date, status, tracked, strategy, type)
               }}>
             <SaveIcon />SAVE
           </button></div>
@@ -124,7 +212,10 @@ function Inputer({variable, name, value, setter}) {
                 `}
               placeholder={value} type={name==='date'?'date':'text'} name="Name" value={val}  
               onFocus={() => setVal(val)} 
-              onChange={(e) => setVal(prev => e.target.value) }
+              onChange={(e) => {
+                setVal(e.target.value)
+                setter([e.target.value, name])
+              }}
               />
           )}
 
@@ -145,6 +236,7 @@ function Inputer({variable, name, value, setter}) {
               onChange={(e) => {
                 setVal(prev => e.target.value)
                 setInitVal(prev => e.target.value)
+                setter([e.target.value, name])
                 }
               }/>
             )

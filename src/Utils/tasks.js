@@ -128,7 +128,9 @@ export const tasks = [
     saving:"",
     nextStep:"",
     bidders:"DRA_FLUOR_SNC", action: 'do task - 05', date: '2022-04-15', type: "Contract", status: 'New' },
-  { name:'task - 06',     strategy:"Tendering",
+  { 
+    name:'task - 06',     
+    strategy:"Tendering",
     reference:"",                
     tracked: 'False',
     endUser_name: "Engineering", 
@@ -151,7 +153,12 @@ export const tasks = [
     budget:"",
     saving:"",
     nextStep:"",
-    bidders:"DRA_FLUOR_SNC", action: 'do task - 06', date: '2022-05-01', type: "Contract", status: 'Ongoing' }
+    bidders:"DRA_FLUOR_SNC", 
+    action: 'do task - 06', 
+    date: '2022-05-01', 
+    type: "Contract", 
+    status: 'Ongoing' 
+  }
 ]
 
 export const tasks_ = [
