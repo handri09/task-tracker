@@ -5,20 +5,23 @@ import { tasks } from '../../../Utils/tasks'
 const border = ''
 
 function Lists() {
+  const [tasks_, setTask] = React.useState(tasks)
+  React.useEffect(() => {
+    reload()
+  }, [])
 
-  React.useEffect(()=>{
-
-    fetch('https://aiskon.deta.dev/',{
-      method: 'GET',
-      headers: {
-      'X-Deepseek-Api-Key': 'a0kybe7b_1K7gHWq6hnxrKXFD3JSmSBQ2AHDggQn7',
-      'Content-Type': 'application/json',
-    }
-  })
-  .then(task => task.json())
-  .then(task => console.log(task))
-  
-}, [])
+  const reload = () => {
+    fetch('https://aiskon.deta.dev/',
+      {
+        method: 'GET',
+        headers: {
+        'X-Deepseek-Api-Key': 'a0kybe7b_1K7gHWq6hnxrKXFD3JSmSBQ2AHDggQn7',
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(task => task.json())
+    .then(task => setTask(task[0]))
+  }
 
   return (
     <>
@@ -33,7 +36,7 @@ function Lists() {
         </div>
         
         {/* List */}
-        { tasks.map( task => <List key={task.name} task={task}/> )}
+        { tasks_.map( task => <List key={task.name} task={task} reload={() => reload()}/> )}
       </div>
     </>
   )
