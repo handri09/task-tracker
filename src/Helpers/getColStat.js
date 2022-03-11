@@ -16,12 +16,6 @@ export function getColStat(status) {
     case 'Cancelled':
       status_color = 'bg-gray-400 '+status_color
       break;
-    case 'Tendering':
-      status_color = 'bg-gray-400 '+status_color
-      break;
-    case 'Contract':
-      status_color = 'bg-gray-400 '+status_color
-      break;
     case 'False':
       status_color = 'bg-red-500 '+status_color
       break;
@@ -29,7 +23,19 @@ export function getColStat(status) {
       status_color = 'bg-green-500 '+status_color
       break;
     case 'Amendment':
-      status_color = 'bg-gray-800 '+status_color
+      status_color = 'bg-gray-500 '+status_color
+      break;
+    case 'PO':
+      status_color = 'bg-gray-700 '+status_color
+      break;
+    case 'Contract':
+      status_color = 'bg-gray-100 text-gray-800 m-0.5'
+      break;
+    case 'Tendering':
+      status_color = 'bg-gray-500 '+status_color
+      break;
+    case 'SSJ':
+      status_color = 'bg-gray-100 text-gray-800 m-0.5'
       break;
   }
   return status_color
