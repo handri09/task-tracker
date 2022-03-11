@@ -23,7 +23,7 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
   const [tracked, setTracked] = React.useState(task.tracked)
   
   React.useEffect(() => {
-    console.log(name, action, date, status, tracked, strategy, type)
+    //console.log(name, action, date, status, tracked, strategy, type)
   },[name, action, date, status, tracked, strategy, type])
 
   const setters = (e) => {
@@ -39,6 +39,17 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
         break;
       case 'tracked':
         setTracked(e[0])
+        break;
+
+
+      case 'name':
+        setName(e[0])
+        break;
+      case 'action':
+        setAction(e[0])
+        break;
+      case 'date':
+        setDate(e[0])
         break;
     }
   }
@@ -81,6 +92,7 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
           <button className='flex items-center gap-2 bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white p-1 px-3 m-2 shadow-md rounded-lg font-mono font-bold'
             onClick={() => {
               // setIsOpen(false)
+              console.log(name, action, date, status, tracked, strategy, type)
               }}>
             <SaveIcon />SAVE
           </button></div>
@@ -145,6 +157,7 @@ function Inputer({variable, name, value, setter}) {
               onChange={(e) => {
                 setVal(prev => e.target.value)
                 setInitVal(prev => e.target.value)
+                setter([e.target.value, name])
                 }
               }/>
             )
