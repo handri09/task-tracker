@@ -12,8 +12,7 @@ Modal.setAppElement('#root')
 
 const pStyle = 'flex w-32 self-center p-2 rounded-md'
 
-function Edit ({ task, isOpen, setIsOpen, nextAction}) {
-  
+function Edit ({ task, isOpen, setIsOpen, nextAction, reload}) {
   const status_color = getColStat(task.status)
 
   const [name, setName] = React.useState(task.name)
@@ -49,6 +48,9 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
 
   React.useEffect(() => {
     //console.log(name, action, date, status, tracked, strategy, type)
+    setTimeout(()=>{
+      reload()
+    }, 2000)
   },[name, action, date, status, tracked, strategy, type])
 
   const setters = (e) => {
@@ -150,9 +152,6 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
         setType(e[0])        
     }
   }
-
-
-
 
   return (
     <Modal 
