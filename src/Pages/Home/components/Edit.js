@@ -62,20 +62,12 @@ function Inputer({variable, name, value}) {
   const [val, setVal] = React.useState('')
   React.useEffect(() => {
     setVal(value)
-    // if (name==='date') {
-    //   setVal(prev => value)
-    // }
-
-    // if (name==='status') {
-    //   setVal(prev => value)
-    // }
   }, [])
   return (
     <>
       <div className='grid grid-cols-1 mx-4 my-3 shadow-sm border border-gray-100'>
         <div className='grid grid-cols-3 gap-2 p-1'>
           <div className='text-lg py-1 px-3 font-bold text-gray-600'>{name}</div>
-
           {/* Input Type depends on the name */}
 
           { types(name) === 'date' && (
@@ -130,8 +122,6 @@ function Inputer({variable, name, value}) {
     </>
   );
 }
-
-
 
 function types(name) {
   switch(name) {
