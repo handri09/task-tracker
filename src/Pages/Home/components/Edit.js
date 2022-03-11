@@ -13,15 +13,18 @@ Modal.setAppElement('#root')
 const pStyle = 'flex w-32 self-center p-2 rounded-md'
 
 function Edit ({ task, isOpen, setIsOpen, nextAction}) {
+  
   const status_color = getColStat(task.status)
+
   const [name, setName] = React.useState(task.name)
   const [action, setAction] = React.useState(task.action)
   const [date, setDate] = React.useState(task.date)
+
   const [status, setStatus] = React.useState(task.status)
   const [type, setType] = React.useState(task.type)
   const [strategy, setStrategy] = React.useState(task.strategy)
   const [tracked, setTracked] = React.useState(task.tracked)
-  
+
   React.useEffect(() => {
     //console.log(name, action, date, status, tracked, strategy, type)
   },[name, action, date, status, tracked, strategy, type])
@@ -40,8 +43,6 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
       case 'tracked':
         setTracked(e[0])
         break;
-
-
       case 'name':
         setName(e[0])
         break;
@@ -136,7 +137,10 @@ function Inputer({variable, name, value, setter}) {
                 `}
               placeholder={value} type={name==='date'?'date':'text'} name="Name" value={val}  
               onFocus={() => setVal(val)} 
-              onChange={(e) => setVal(prev => e.target.value) }
+              onChange={(e) => {
+                setVal(e.target.value)
+                setter([e.target.value, name])
+              }}
               />
           )}
 
