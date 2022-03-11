@@ -5,6 +5,21 @@ import { tasks } from '../../../Utils/tasks'
 const border = ''
 
 function Lists() {
+
+  React.useEffect(()=>{
+
+    fetch('https://aiskon.deta.dev/',{
+      method: 'GET',
+      headers: {
+      'X-Deepseek-Api-Key': 'a0kybe7b_1K7gHWq6hnxrKXFD3JSmSBQ2AHDggQn7',
+      'Content-Type': 'application/json',
+    }
+  })
+  .then(task => task.json())
+  .then(task => console.log(task))
+  
+}, [])
+
   return (
     <>
       <div className="my-1 font-mono text-center">

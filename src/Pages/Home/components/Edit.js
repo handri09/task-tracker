@@ -107,9 +107,6 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
       case "frqSent":
         setFrqSent(e[0])
         break;
-      case "name":
-        setName(e[0])
-        break;
       case "nextStep":
         setNextStep(e[0])
         break;
@@ -154,6 +151,9 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
     }
   }
 
+
+
+
   return (
     <Modal 
       isOpen={isOpen}
@@ -191,8 +191,49 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
         <div className='flex justify-center items-center text-white'>
           <button className='flex items-center gap-2 bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white p-1 px-3 m-2 shadow-md rounded-lg font-mono font-bold'
             onClick={() => {
-              // setIsOpen(false)
+                setIsOpen(false)
                 console.log({action:action},{bidders:bidders},{budget:budget},{cbe:cbe},{date:date},{endUser_dep:endUser_dep},{endUser_name:endUser_name},{execDate:execDate},{extendedClosingDate:extendedClosingDate},{frqClosed:frqClosed},{frqSent:frqSent},{name:name},{nextStep:nextStep},{quotationSentToEu:quotationSentToEu},{quoteClarif:quoteClarif},{reference:reference},{responsible:responsible},{rtaSub:rtaSub},{rtaValid:rtaValid},{saving:saving},{siteVisit:siteVisit},{sowSrfReceived:sowSrfReceived},{state:state},{status:status},{strategy:strategy},{tbe:tbe},{tracked:tracked},{type:type})
+
+                  fetch('https://aiskon.deta.dev/',{
+                    method: 'POST',
+                    headers: {
+                      'X-Deepseek-Api-Key': 'a0kybe7b_1K7gHWq6hnxrKXFD3JSmSBQ2AHDggQn7',
+                      'Content-Type': 'application/json',
+                    }, 
+                    body: JSON.stringify({
+                      "action": action ? action : "",
+                      "bidders": bidders ? bidders : "",
+                      "budget": budget ? budget : "",
+                      "cbe": cbe ? cbe : "",
+                      "date": date ? date : "",
+                      "endUser_dep": endUser_dep ? endUser_dep : "",
+                      "endUser_name": endUser_name ? endUser_name : "",
+                      "execDate": execDate ? execDate : "",
+                      "extendedClosingDate": extendedClosingDate ? extendedClosingDate : "",
+                      "frqClosed": frqClosed ? frqClosed : "",
+                      "frqSent": frqSent ? frqSent : "",
+                      "name": name ? name : "",
+                      "nextStep": nextStep ? nextStep : "",
+                      "quotationSentToEu": quotationSentToEu ? quotationSentToEu : "",
+                      "quoteClarif": quoteClarif ? quoteClarif : "",
+                      "reference": reference ? reference : "",
+                      "responsible": responsible ? responsible : "",
+                      "rtaSub": rtaSub ? rtaSub : "",
+                      "rtaValid": rtaValid ? rtaValid : "",
+                      "saving": saving ? saving : "",
+                      "siteVisit": siteVisit ? siteVisit : "",
+                      "sowSrfReceived": sowSrfReceived ? sowSrfReceived : "",
+                      "state": state ? state : "",
+                      "status": status ? status : "",
+                      "strategy": strategy ? strategy : "",
+                      "tbe": tbe ? tbe : "",
+                      "tracked": tracked ? tracked : "",
+                      "type": type ? type : "",                      
+                    })
+                })
+                .then(task => task.json())
+                .then(task => console.log(task))
+
               }}>
             <SaveIcon />SAVE
           </button></div>

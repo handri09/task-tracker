@@ -23,7 +23,6 @@ function Lists(props) {
     .then(task => console.log(task))
   }, [])
 
-
   tasksFilt.sort((a,b)=> a.duration-b.duration)
   console.log(tasksFilt)
 
