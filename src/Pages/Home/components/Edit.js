@@ -18,9 +18,31 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
   const [action, setAction] = React.useState(task.action)
   const [date, setDate] = React.useState(task.date)
   const [status, setStatus] = React.useState(task.status)
+  const [type, setType] = React.useState(task.type)
+  const [strategy, setStrategy] = React.useState(task.strategy)
+  const [tracked, setTracked] = React.useState(task.tracked)
+  
   React.useEffect(() => {
-    console.log(name, action, date, status)
-  },[name, action, date, status])
+    console.log(name, action, date, status, tracked, strategy, type)
+  },[name, action, date, status, tracked, strategy, type])
+
+  const setters = (e) => {
+    switch(e[1]) {
+      case 'status':
+        setStatus(e[0])
+        break;
+      case 'type':
+        setType(e[0])
+        break;
+      case 'strategy':
+        setStrategy(e[0])
+        break;
+      case 'tracked':
+        setTracked(e[0])
+        break;
+    }
+  }
+
   return (
     <Modal 
       isOpen={isOpen}
@@ -51,7 +73,7 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 ">
         {Object.keys(task).map( k => (
-          <Inputer key={k} name={k} value={task[k]} setter={(e) => console.log('Setter')}/>
+          <Inputer key={k} name={k} value={task[k]} setter={(e,state) => setters(e)}/>
         ))}
       </div>
       <div className='sticky bottom-0 z-10 bg-white'>
@@ -141,8 +163,7 @@ function Inputer({variable, name, value, setter}) {
                   task={val} 
                   onChanging={(e) => {
                     setVal(e)
-                    console.log('setter', e)
-                    setter(e)
+                    setter([e, name])
                   }}
                   />
               </div>
