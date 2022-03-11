@@ -6,6 +6,7 @@ import AutoButton from '../../../Helpers/mui/AutoButton'
 import { DateFormating } from '../../../Helpers/DateFormating'
 import Popover from './mui/Popover'
 import { getColStat } from '../../../Helpers/getColStat'
+import { types } from '../../../Helpers/getTypes'
 
 Modal.setAppElement('#root')
 
@@ -17,12 +18,15 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
   const [action, setAction] = React.useState(task.action)
   const [date, setDate] = React.useState(task.date)
   const [status, setStatus] = React.useState(task.status)
+  React.useEffect(() => {
+    console.log(name, action, date, status)
+  },[name, action, date, status])
   return (
     <Modal 
       isOpen={isOpen}
       shouldCloseOnOverlayClick = {true}
       onRequestClose={() => setIsOpen()}
-      style={
+      style = {
         {
           overlay: {
             background: 'rgba(220, 220, 220, 0.7)',
@@ -45,23 +49,41 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 border border-red-800">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 ">
         {Object.keys(task).map( k => (
-          <Inputer key={k} name={k} value={task[k]}/>
+          <Inputer key={k} name={k} value={task[k]} setter={(e) => console.log('Setter')}/>
         ))}
       </div>
-      <div className='h-5 mb-5'></div>
+      <div className='sticky bottom-0 z-10 bg-white'>
+        <div className='flex justify-center items-center text-white'>
+          <button className='flex items-center gap-2 bg-blue-100 text-blue-600 hover:bg-blue-600 hover:text-white p-1 px-3 m-2 shadow-md rounded-lg font-mono font-bold'
+            onClick={() => {
+              // setIsOpen(false)
+              }}>
+            <SaveIcon />SAVE
+          </button></div>
+      </div>
     </Modal>
   );
 }
 
 export default Edit;
 
-function Inputer({variable, name, value}) {
+function Inputer({variable, name, value, setter}) {
   const status_color = getColStat(value)
   const [val, setVal] = React.useState('')
+  const [initVal, setInitVal] = React.useState('')
   React.useEffect(() => {
-    setVal(value)
+    switch(types(name)) {
+      case 'date':
+        setVal(value)
+        break;
+      case 'digit':
+        setVal(value)
+        break
+      case 'text':
+        setInitVal(value)
+    } 
   }, [])
   return (
     <>
@@ -92,11 +114,15 @@ function Inputer({variable, name, value}) {
                 focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm
                 hover:border-sky-500
                 `}
-              placeholder={value} type={name==='date'?'date':'text'} name="Name" value={val}  
-              onFocus={() => setVal(value)} 
+              placeholder={value} type='text' name="Name" value={val}  
+              onFocus={() => {
+                if (initVal === value) {
+                  setVal(value)
+                } 
+              }}
               onChange={(e) => {
                 setVal(prev => e.target.value)
-                console.dir(e.target.value)
+                setInitVal(prev => e.target.value)
                 }
               }/>
             )
@@ -113,7 +139,11 @@ function Inputer({variable, name, value}) {
                   `} 
                   color={getColStat(val)} 
                   task={val} 
-                  onChanging={(e) => setVal(e)}
+                  onChanging={(e) => {
+                    setVal(e)
+                    console.log('setter', e)
+                    setter(e)
+                  }}
                   />
               </div>
             )}
@@ -121,69 +151,4 @@ function Inputer({variable, name, value}) {
       </div>
     </>
   );
-}
-
-function types(name) {
-  switch(name) {
-    case 'status':
-      return 'digit'
-    case 'type':
-      return 'digit'
-    case 'name':
-      return 'text'
-    case "action":
-      return "text"
-    case "bidders":
-      return "text"
-    case "budget":
-      return "text"
-    case "cbe":
-      return "text"
-    case "date":
-      return "date"
-    case "endUser_name":
-      return "text"
-    case "endUser_dep":
-      return "text"
-    case "execDate":
-      return "text"
-    case "extendedClosingDate":
-      return "text"
-    case "frqClosed":
-      return "text"
-    case "frqSent":
-      return "text"
-    case "name":
-      return "text"
-    case "nextAction":
-      return "text"
-    case "nextStep":
-      return "text"
-    case "quotationSentToEu":
-      return "text"
-    case "quoteClarif":
-      return "text"
-    case "reference":
-      return "text"
-    case "responsible":
-      return "text"
-    case "rtaSub":
-      return "text"
-    case "rtaValid":
-      return "text"
-    case "saving":
-      return "text"
-    case "siteVisit":
-      return "text"
-    case "sowSrfReceived":
-      return "text"
-    case "state":
-      return "text"
-    case "strategy":
-      return "digit"
-    case "tbe":
-      return "text"
-    case "tracked":
-      return "digit"    
-  }
 }
