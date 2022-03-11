@@ -9,7 +9,6 @@ const strategy_ = ['SSJ', 'Tendering']
 const type_ = ['PO', 'Contract', 'Amendment']
 
 export default function PopoverPopupState({ task, color, className, onChanging }) {
-  task ? console.log(true): console.log(false)
   return (
     <PopupState variant="popover" popupId="demo-popup-popover" >
       {(popupState) => (
