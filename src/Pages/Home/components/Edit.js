@@ -28,7 +28,7 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
   const [endUser_name, setEndUser_name] = React.useState(task.endUser_name)
   const [endUser_dep, setEndUser_dep] = React.useState(task.endUser_dep)
   const [state, setState] = React.useState(task.state)
-  const [nextAction, setNextAction] = React.useState(task.nextAction)
+  //const [nextAction, setNextAction] = React.useState(task.nextAction)
   const [responsible, setResponsible] = React.useState(task.responsible)
   const [sowSrfReceived, setSowSrfReceived] = React.useState(task.sowSrfReceived)
   const [frqSent, setFrqSent] = React.useState(task.frqSent)
@@ -46,6 +46,7 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
   const [saving, setSaving] = React.useState(task.saving)
   const [nextStep, setNextStep] = React.useState(task.nextStep)
   const [bidders, setBidders] = React.useState(task.bidders)
+  const [reference, setReference] = React.useState(task.reference)
 
   React.useEffect(() => {
     //console.log(name, action, date, status, tracked, strategy, type)
@@ -74,6 +75,58 @@ function Edit ({ task, isOpen, setIsOpen, nextAction}) {
       case 'date':
         setDate(e[0])
         break;
+      case "action":
+        return setAction(e[0])
+      case "bidders":
+        return setBidders(e[0])
+      case "budget":
+        return setBudget(e[0])
+      case "cbe":
+        return setCbe(e[0])
+      case "date":
+        return setDate(e[0])
+      case "endUser_dep":
+        return setEndUser_dep(e[0])
+      case "endUser_name":
+        return setEndUser_name(e[0])
+      case "execDate":
+        return setExecDate(e[0])
+      case "extendedClosingDate":
+        return setExtendedClosingDate(e[0])
+      case "frqClosed":
+        return setFrqClosed(e[0])
+      case "frqSent":
+        return setFrqSent(e[0])
+      case "name":
+        return setName(e[0])
+      case "nextStep":
+        return setNextStep(e[0])
+      case "quotationSentToEu":
+        return setQuotationSentToEu(e[0])
+      case "quoteClarif":
+        return setQuoteClarif(e[0])
+      case "reference":
+        return setReference(e[0])
+      case "responsible":
+        return setResponsible(e[0])
+      case "rtaSub":
+        return setRtaSub(e[0])
+      case "rtaValid":
+        return setRtaValid(e[0])
+      case "saving":
+        return setSaving(e[0])
+      case "siteVisit":
+        return setSiteVisit(e[0])
+      case "sowSrfReceived":
+        return setSowSrfReceived(e[0])
+      case "state":
+        return setState(e[0])
+      case "tbe":
+        return setTbe(e[0])
+      case "tracked":
+        return setTracked(e[0])
+      case "type":
+        return setType(e[0])        
     }
   }
 
