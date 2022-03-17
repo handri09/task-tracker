@@ -1,9 +1,12 @@
 import { Home } from './Pages'
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
     <div className="container mx-auto">
-      <Home />
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </div>
   );
 }

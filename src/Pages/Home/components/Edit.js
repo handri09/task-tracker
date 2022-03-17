@@ -12,7 +12,7 @@ Modal.setAppElement('#root')
 
 const pStyle = 'flex w-32 self-center p-2 rounded-md'
 
-function Edit ({ task, isOpen, setIsOpen, nextAction, reload}) {
+function Edit ({ task, isOpen, setIsOpen, reload }) {
   const status_color = getColStat(task.status)
 
   const [name, setName] = React.useState(task.name)
