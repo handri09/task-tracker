@@ -12,7 +12,7 @@ function Home() {
   return (
     <>
       <NavBar />  
-      <Lists open={open} />
+      <Lists open={open} setClose={() => setOpen(false)}/>
       <button 
         className={`
           fixed bottom-0 right-0 mr-5 mb-5
@@ -24,6 +24,7 @@ function Home() {
         onClick={() => {
           setOpen((prev)=> !prev)
         }}
+
         ><AddIcon /></button>
     </>
   )

@@ -4,7 +4,7 @@ import { tasks } from '../../../Utils/tasks'
 
 const border = ''
 
-function Lists({ open }) {
+function Lists({ open, setClose }) {
   const [tasks_, setTask] = React.useState(tasks)
   // const [open_, setOpen] = React.useState(open)
 
@@ -43,7 +43,7 @@ function Lists({ open }) {
         </div>
         
         {/* List */}
-        { tasks_.map( (task, index) => <List key={index} open={open} task={task} reload={() => reload()}/> )}
+        { tasks_.map( (task, index) => <List key={index} open={open} setClose={() => setClose()} task={task} reload={() => reload()}/> )}
       </div>
     </>
   )

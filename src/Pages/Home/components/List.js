@@ -3,7 +3,7 @@ import Popover from '../../../Helpers/mui/Popover'
 import { getColStat } from '../../../Helpers/getColStat'
 import EditModal from './Edit'
 
-function List({ task, reload, addTask }) {
+function List({ task, reload, open, setClose }) {
   const status_color = getColStat(task.status)
   const border = 'border-2 border-gray-300 bg-gray-200'
   const [isOpen, setIsOpen] = React.useState(false)
@@ -19,6 +19,7 @@ function List({ task, reload, addTask }) {
       <div className={`${border}`} onClick={() => openEdit(task.name)}>{task.date}</div>
       <Popover color={status_color} task={task.status}/>
       <EditModal reload={() => reload()} task={task} isOpen={isOpen} setIsOpen={() => setIsOpen(false)} nextAction={task.action} />
+      <EditModal reload={() => reload()} task={" "} isOpen={open} setIsOpen={() => setClose()} nextAction={task.action} />
     </div>
   )
 }
