@@ -4,7 +4,7 @@ import { tasks } from '../../../Utils/tasks'
 
 const border = ''
 
-function Lists() {
+function Lists({addTask}) {
   const [tasks_, setTask] = React.useState(tasks)
   React.useEffect(() => {
     reload()
@@ -36,7 +36,7 @@ function Lists() {
         </div>
         
         {/* List */}
-        { tasks_.map( task => <List key={task.name} task={task} reload={() => reload()}/> )}
+        { tasks_.map( (task, index) => <List key={index} task={task} reload={() => reload()}/> )}
       </div>
     </>
   )

@@ -3,7 +3,7 @@ import Popover from '../../../Helpers/mui/Popover'
 import { getColStat } from '../../../Helpers/getColStat'
 import EditModal from './Edit'
 
-function List({ task, reload }) {
+function List({ task, reload, addTask }) {
   const status_color = getColStat(task.status)
   const border = 'border-2 border-gray-300 bg-gray-200'
   const [isOpen, setIsOpen] = React.useState(false)
