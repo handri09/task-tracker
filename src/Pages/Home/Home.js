@@ -5,10 +5,14 @@ import AddIcon from '@mui/icons-material/Add'
 import { OpenInNew } from '@mui/icons-material'
 
 function Home() {
+  const [open, setOpen] = React.useState(false)
+  React.useEffect(() => {
+    //console.log(open)
+  }, [open] )
   return (
     <>
       <NavBar />  
-      <Lists />
+      <Lists open={open} />
       <button 
         className={`
           fixed bottom-0 right-0 mr-5 mb-5
@@ -17,6 +21,9 @@ function Home() {
           text-white font-bold text-4xl
           rounded-full
         `}
+        onClick={() => {
+          setOpen((prev)=> !prev)
+        }}
         ><AddIcon /></button>
     </>
   )
