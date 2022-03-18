@@ -2,6 +2,7 @@ import React from 'react'
 import Popover from '../../../Helpers/mui/Popover'
 import { getColStat } from '../../../Helpers/getColStat'
 import EditModal from './Edit'
+import AddModal from './Add'
 
 function List({ task, reload, open, setClose }) {
   const status_color = getColStat(task.status)
@@ -11,7 +12,7 @@ function List({ task, reload, open, setClose }) {
   const openEdit = (e) => {
     setIsOpen(true)
   }
-
+  console.log(open)
   return (
     <div className="grid grid-cols-5 gap-1 my-1">
       <div className={`${border} col-span-2`} onClick={() => openEdit(task.name)}>{task.name}</div>
@@ -19,7 +20,6 @@ function List({ task, reload, open, setClose }) {
       <div className={`${border}`} onClick={() => openEdit(task.name)}>{task.date}</div>
       <Popover color={status_color} task={task.status}/>
       <EditModal reload={() => reload()} task={task} isOpen={isOpen} setIsOpen={() => setIsOpen(false)} nextAction={task.action} />
-      <EditModal reload={() => reload()} task={" "} isOpen={open} setIsOpen={() => setClose()} nextAction={task.action} />
     </div>
   )
 }

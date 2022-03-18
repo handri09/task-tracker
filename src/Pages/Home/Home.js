@@ -2,13 +2,18 @@ import React from 'react'
 import NavBar from '../../Components/NavBar'
 import Lists from './components/Lists'
 import AddIcon from '@mui/icons-material/Add'
-import { OpenInNew } from '@mui/icons-material'
+import {Add} from './components'
 
 function Home() {
   const [open, setOpen] = React.useState(false)
   React.useEffect(() => {
     //console.log(open)
   }, [open] )
+
+  const reload = () => {
+
+  }
+
   return (
     <>
       <NavBar />  
@@ -26,6 +31,7 @@ function Home() {
         }}
 
         ><AddIcon /></button>
+        <Add reload={() => reload()} isOpen={open} setIsOpen={() => setOpen()}/>
     </>
   )
 }
