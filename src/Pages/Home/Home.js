@@ -6,18 +6,12 @@ import {Add} from './components'
 
 function Home() {
   const [open, setOpen] = React.useState(false)
-  React.useEffect(() => {
-    //console.log(open)
-  }, [open] )
-
-  const reload = () => {
-
-  }
+  const [reloading, setReloading] = React.useState(false)
 
   return (
     <>
       <NavBar />  
-      <Lists open={open} setClose={() => setOpen(false)}/>
+      <Lists open={open} setClose={() => setOpen(false)} reloading={reloading}/>
       <button 
         className={`
           fixed bottom-0 right-0 mr-5 mb-5
@@ -31,7 +25,7 @@ function Home() {
         }}
 
         ><AddIcon /></button>
-        <Add reload={() => reload()} isOpen={open} setIsOpen={() => setOpen()}/>
+        <Add reload={() => setReloading((prev) => !prev)} isOpen={open} setIsOpen={() => setOpen()}/>
     </>
   )
 }
