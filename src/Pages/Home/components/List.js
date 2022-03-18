@@ -12,7 +12,6 @@ function List({ task, reload, open, setClose }) {
   const openEdit = (e) => {
     setIsOpen(true)
   }
-  console.log(open)
   return (
     <div className="grid grid-cols-5 gap-1 my-1">
       <div className={`${border} col-span-2`} onClick={() => openEdit(task.name)}>{task.name}</div>

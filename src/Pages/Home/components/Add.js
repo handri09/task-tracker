@@ -4,7 +4,7 @@ import SaveIcon from '@mui/icons-material/Save';
 import Popover from './mui/Popover'
 import { getColStat } from '../../../Helpers/getColStat'
 import { types } from '../../../Helpers/getTypes'
-import { DateFormating, DateFormating2 } from '../../../Helpers/DateFormating';
+import { DateFormating } from '../../../Helpers/DateFormating';
 
 Modal.setAppElement('#root')
 
@@ -13,7 +13,7 @@ const pStyle = 'flex w-32 self-center p-2 rounded-md'
 const task = {
   name:'Add New Task',  
   action: '', 
-  date: DateFormating(Date.now()),    
+  date: '2022-04-01',    
   status: 'New',
   strategy:"SSJ",
   type: "Contract",        
@@ -78,7 +78,7 @@ function Add ({ isOpen, setIsOpen, reload }) {
   React.useEffect(() => {
     setTimeout(()=>{
       reload()
-    }, 2000)
+    }, 5000)
   },[name, action, date, status, tracked, strategy, type])
 
   const setters = (e) => {

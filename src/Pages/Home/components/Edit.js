@@ -1,9 +1,6 @@
 import React from 'react'
 import Modal from 'react-modal'
-import { Button, Input } from '@mui/material'
 import SaveIcon from '@mui/icons-material/Save';
-import AutoButton from '../../../Helpers/mui/AutoButton'
-import { DateFormating } from '../../../Helpers/DateFormating'
 import Popover from './mui/Popover'
 import { getColStat } from '../../../Helpers/getColStat'
 import { types } from '../../../Helpers/getTypes'
@@ -13,8 +10,6 @@ Modal.setAppElement('#root')
 const pStyle = 'flex w-32 self-center p-2 rounded-md'
 
 function Edit ({ task, isOpen, setIsOpen, reload }) {
-  const status_color = getColStat(task.status)
-
   const [name, setName] = React.useState(task.name)
   const [action, setAction] = React.useState(task.action)
   const [date, setDate] = React.useState(task.date)
@@ -47,10 +42,9 @@ function Edit ({ task, isOpen, setIsOpen, reload }) {
   const [reference, setReference] = React.useState(task.reference)
 
   React.useEffect(() => {
-    //console.log(name, action, date, status, tracked, strategy, type)
     setTimeout(()=>{
       reload()
-    }, 2000)
+    }, 5000)
   },[name, action, date, status, tracked, strategy, type])
 
   const setters = (e) => {
@@ -194,12 +188,13 @@ function Edit ({ task, isOpen, setIsOpen, reload }) {
                 console.log({action:action},{bidders:bidders},{budget:budget},{cbe:cbe},{date:date},{endUser_dep:endUser_dep},{endUser_name:endUser_name},{execDate:execDate},{extendedClosingDate:extendedClosingDate},{frqClosed:frqClosed},{frqSent:frqSent},{name:name},{nextStep:nextStep},{quotationSentToEu:quotationSentToEu},{quoteClarif:quoteClarif},{reference:reference},{responsible:responsible},{rtaSub:rtaSub},{rtaValid:rtaValid},{saving:saving},{siteVisit:siteVisit},{sowSrfReceived:sowSrfReceived},{state:state},{status:status},{strategy:strategy},{tbe:tbe},{tracked:tracked},{type:type})
 
                   fetch('https://aiskon.deta.dev/',{
-                    method: 'POST',
+                    method: 'PUT',
                     headers: {
                       'X-Deepseek-Api-Key': 'a0kybe7b_1K7gHWq6hnxrKXFD3JSmSBQ2AHDggQn7',
                       'Content-Type': 'application/json',
                     }, 
                     body: JSON.stringify({
+                      "key" : task.key,
                       "action": action ? action : "",
                       "bidders": bidders ? bidders : "",
                       "budget": budget ? budget : "",
@@ -244,7 +239,6 @@ function Edit ({ task, isOpen, setIsOpen, reload }) {
 export default Edit;
 
 function Inputer({variable, name, value, setter}) {
-  const status_color = getColStat(value)
   const [val, setVal] = React.useState('')
   const [initVal, setInitVal] = React.useState('')
   React.useEffect(() => {
