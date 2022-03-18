@@ -78,7 +78,7 @@ function Add ({ isOpen, setIsOpen, reload }) {
   React.useEffect(() => {
     setTimeout(()=>{
       reload()
-    }, 5000)
+    }, 3000)
   },[name, action, date, status, tracked, strategy, type])
 
   const setters = (e) => {
@@ -258,7 +258,9 @@ function Add ({ isOpen, setIsOpen, reload }) {
                 })
                 .then(task => task.json())
                 .then(task => console.log(task))
-
+                setTimeout(()=>{
+                  reload()
+                }, 3000)
               }}>
             <SaveIcon />SAVE
           </button></div>

@@ -44,7 +44,7 @@ function Edit ({ task, isOpen, setIsOpen, reload }) {
   React.useEffect(() => {
     setTimeout(()=>{
       reload()
-    }, 5000)
+    }, 3000)
   },[name, action, date, status, tracked, strategy, type])
 
   const setters = (e) => {

@@ -4,7 +4,7 @@ import { tasks } from '../../../Utils/tasks'
 
 const border = ''
 
-function Lists({ open, setClose }) {
+function Lists({ open, setClose, reloading }) {
   const [tasks_, setTask] = React.useState(tasks)
   // const [open_, setOpen] = React.useState(open)
 
@@ -12,11 +12,6 @@ function Lists({ open, setClose }) {
     reload()
   }, [])
 
-  // React.useEffect(() => {
-  //   console.log(open_)
-  // }, [open_])
-
-  // console.log(open)
   const reload = () => {
     fetch('https://aiskon.deta.dev/',
       {
@@ -29,6 +24,10 @@ function Lists({ open, setClose }) {
     .then(task => task.json())
     .then(task => setTask(task[0]))
   }
+
+  React.useEffect(() => {
+    reload()
+  }, [reloading])
 
   return (
     <>
