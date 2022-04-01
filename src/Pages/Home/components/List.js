@@ -14,8 +14,8 @@ function List({ task, reload, open, setClose }) {
   }
   return (
     <div className="grid grid-cols-5 gap-1 my-1">
-      <div className={`${border} col-span-2`} onClick={() => openEdit(task.name)}>{task.name}</div>
-      <div className={`${border}`} onClick={() => openEdit(task.name)}>{task.action}</div>
+      <div className={`${border} col-span-2 truncate`} onClick={() => openEdit(task.name)}>{task.name}</div>
+      <div className={`${border} truncate`} onClick={() => openEdit(task.name)}>{task.action}</div>
       <div className={`${border}`} onClick={() => openEdit(task.name)}>{task.date}</div>
       <Popover color={status_color} task={task.status}/>
       <EditModal reload={() => reload()} task={task} isOpen={isOpen} setIsOpen={() => setIsOpen(false)} nextAction={task.action} />

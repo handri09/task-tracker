@@ -6,7 +6,6 @@ const border = ''
 
 function Lists({ open, setClose, reloading }) {
   const [tasks_, setTask] = React.useState(tasks)
-  // const [open_, setOpen] = React.useState(open)
 
   React.useEffect(() => {
     reload()
@@ -49,4 +48,3 @@ function Lists({ open, setClose, reloading }) {
 }
 
 export default Lists
-
