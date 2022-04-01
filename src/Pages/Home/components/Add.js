@@ -4,12 +4,46 @@ import SaveIcon from '@mui/icons-material/Save';
 import Popover from './mui/Popover'
 import { getColStat } from '../../../Helpers/getColStat'
 import { types } from '../../../Helpers/getTypes'
+import { DateFormating } from '../../../Helpers/DateFormating';
 
 Modal.setAppElement('#root')
 
 const pStyle = 'flex w-32 self-center p-2 rounded-md'
 
-function Edit ({ task, isOpen, setIsOpen, reload }) {
+const task = {
+  name:'Add New Task',  
+  action: '', 
+  date: '2022-04-01',    
+  status: 'New',
+  strategy:"SSJ",
+  type: "Contract",        
+  endUser_name: "", 
+  endUser_dep: "" ,
+  state:"",      
+  tracked: 'False',
+  nextAction:"",
+  responsible:["Diary"],
+  sowSrfReceived:"",
+  frqSent:"",
+  siteVisit:"",
+  frqClosed:"",
+  extendedClosingDate:"",
+  quotationSentToEu:"",
+  quoteClarif:"",
+  tbe:"",
+  cbe:"",
+  rtaSub:"",
+  rtaValid:"",
+  execDate:"",
+  budget:"",
+  saving:"",
+  nextStep:"",
+  bidders:"", 
+  reference:"",    
+}
+
+function Add ({ isOpen, setIsOpen, reload }) {
+
   const [name, setName] = React.useState(task.name)
   const [action, setAction] = React.useState(task.action)
   const [date, setDate] = React.useState(task.date)
@@ -146,7 +180,6 @@ function Edit ({ task, isOpen, setIsOpen, reload }) {
         setType(e[0])        
     }
   }
-
   return (
     <Modal 
       isOpen={isOpen}
@@ -166,8 +199,7 @@ function Edit ({ task, isOpen, setIsOpen, reload }) {
             borderRadius: '1.5%',
           }
         }
-      }
-      >
+      }>
       <div className='sticky top-0 z-10 bg-white grid grid-cols-2 font-mono font-bold text-2xl shadow-md '>
         <div className='flex justify-start items-center ml-5 text-gray-500'>{task.name}</div>
         <div className='flex justify-end items-start p-1'>
@@ -188,13 +220,12 @@ function Edit ({ task, isOpen, setIsOpen, reload }) {
                 console.log({action:action},{bidders:bidders},{budget:budget},{cbe:cbe},{date:date},{endUser_dep:endUser_dep},{endUser_name:endUser_name},{execDate:execDate},{extendedClosingDate:extendedClosingDate},{frqClosed:frqClosed},{frqSent:frqSent},{name:name},{nextStep:nextStep},{quotationSentToEu:quotationSentToEu},{quoteClarif:quoteClarif},{reference:reference},{responsible:responsible},{rtaSub:rtaSub},{rtaValid:rtaValid},{saving:saving},{siteVisit:siteVisit},{sowSrfReceived:sowSrfReceived},{state:state},{status:status},{strategy:strategy},{tbe:tbe},{tracked:tracked},{type:type})
 
                   fetch('https://aiskon.deta.dev/',{
-                    method: 'PUT',
+                    method: 'POST',
                     headers: {
                       'X-Deepseek-Api-Key': 'a0kybe7b_1K7gHWq6hnxrKXFD3JSmSBQ2AHDggQn7',
                       'Content-Type': 'application/json',
                     }, 
                     body: JSON.stringify({
-                      "key" : task.key,
                       "action": action ? action : "",
                       "bidders": bidders ? bidders : "",
                       "budget": budget ? budget : "",
@@ -227,7 +258,9 @@ function Edit ({ task, isOpen, setIsOpen, reload }) {
                 })
                 .then(task => task.json())
                 .then(task => console.log(task))
-
+                setTimeout(()=>{
+                  reload()
+                }, 3000)
               }}>
             <SaveIcon />SAVE
           </button></div>
@@ -236,7 +269,7 @@ function Edit ({ task, isOpen, setIsOpen, reload }) {
   );
 }
 
-export default Edit;
+export default Add;
 
 function Inputer({variable, name, value, setter}) {
   const [val, setVal] = React.useState('')
